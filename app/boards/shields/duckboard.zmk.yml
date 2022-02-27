@@ -1,0 +1,12 @@
+file_format: "1"
+id: duckboard
+name: duckboard
+type: shield
+url: https://doodboard.xyz
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - encoder
+  - underglow
