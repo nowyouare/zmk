@@ -54,7 +54,7 @@
             bindings = <&bt PRINTSCREEN>;
             layers = <1>;
         };
-        combo_prtsc {
+        combo_pause {
             timeout-ms = <TIMEOUT>;
             key-positions = <1 8>;
             bindings = <&bt PAUSE_BREAK>;
