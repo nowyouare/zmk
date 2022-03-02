@@ -15,43 +15,89 @@
 #define FUNC 1
 #define RGB_BT 2
 
+#define TIMEOUT 100
+
 / {
-	keymap {
-		compatible = "zmk,keymap";
-		
-		default_layer {
-			bindings = <
-				&none		&to FUNC	&kp KP_SLASH	&kp KP_ASTERISK	&kp KP_MINUS
-				&none		&kp KP_NUMBER_7 &kp KP_NUMBER_8 &kp KP_NUMBER_9 &none
-				&none		&kp KP_NUMBER_4 &kp KP_NUMBER_5 &kp KP_NUMBER_6 &kp KP_PLUS
-				&kp K_MUTE	&kp KP_NUMBER_1 &kp KP_NUMBER_2 &kp KP_NUMBER_3 &none
-				&kp BACKSPACE	&none 		&kp KP_NUMBER_0 &kp KP_DOT      &kp KP_ENTER
-			>;
+    combos {
+        compatible = "zmk,combos";
+        combo_bootloader {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 3 4>;
+            bindings = <&bootloader>;
+        };
+        combo_reset {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 3>;
+            bindings = <&reset>;
+        };
+        combo_btclr {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 18>;
+            bindings = <&bt BT_CLR>;
+            layers = <2>;
+        };
+        combo_btnxt {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 16>;
+            bindings = <&bt BT_NXT>;
+            layers = <2>;
+        };
+        combo_btprv {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 17>;
+            bindings = <&bt BT_PRV>;
+            layers = <2>;
+        };
+        combo_prtsc {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 6>;
+            bindings = <&kp PRINTSCREEN>;
+            layers = <1>;
+        };
+        combo_pause {
+            timeout-ms = <TIMEOUT>;
+            key-positions = <1 8>;
+            bindings = <&kp PAUSE_BREAK>;
+            layers = <1>;
+        };        
+    };
+    keymap {
+        compatible = "zmk,keymap";
+        
+        default_layer {
+            bindings = <
+                &none           &to FUNC       &kp SLASH      &kp ASTERISK    &kp MINUS
+                &none           &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9    &kp PLUS
+                &none           &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6    &kp PLUS
+                &kp K_MUTE      &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3    &kp ENTER
+                &kp BACKSPACE   &kp NUMBER_0   &kp NUMBER_0   &kp DOT         &kp ENTER
+            >;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-		};
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
 
-		 func_layer {
-			 bindings = <
-				&none			&to RGB_BT	&trans     	&trans 		&trans
-				&none			&kp HOME    	&kp UP    	&kp PG_UP    	&none
-				&none			&kp LEFT    	&none      	&kp RIGHT      	&trans
-				&ext_power EP_TOG	&kp END    	&kp DOWN    	&kp PG_DN    	&none
-				&none			&none	 	&kp INS         &kp DEL		&trans
-			 >;
+         func_layer {
+             bindings = <
+                &none           &to DEFAULT    &trans        &trans          &kp BACKSPACE
+                &none           &kp HOME       &kp UP        &kp PG_UP       &kp PLUS
+                &none           &kp LEFT       &kp DOWN      &kp RIGHT       &kp PLUS
+                &kp K_MUTE      &kp END        &kp DOWN      &kp PG_DN       &kp ENTER
+                &to RGB_BT      &kp INS        &kp INS       &kp DEL         &kp ENTER
+            >;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-		 };
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+         };
 
-		 rgb_bt_layer {
-                         bindings = <
-                                &none          	&to DEFAULT    	&rgb_ug RGB_TOG &rgb_ug RGB_EFF	&none
-                                &none  	   	&rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &none
-                             	&none	        &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &none
-                                &bootloader    	&none		&bt BT_CLR 	&bt BT_NXT      &none
-                                &none		&none           &none    	&bt BT_PRV      &none
-                         >;
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                 };
-	};
+         rgb_bt_layer {
+             bindings = <
+                &none              &to FUNC         &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &none
+                &none              &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &none
+                &none              &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &none
+                &ext_power EP_TOG  &none            &none            &none            &none
+                &to FUNC           &none            &none            &none            &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+         };
+    };
 };
