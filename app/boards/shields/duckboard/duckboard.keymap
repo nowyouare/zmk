@@ -51,13 +51,13 @@
         combo_prtsc {
             timeout-ms = <TIMEOUT>;
             key-positions = <1 6>;
-            bindings = <&bt PRINTSCREEN>;
+            bindings = <&kp PRINTSCREEN>;
             layers = <1>;
         };
         combo_pause {
             timeout-ms = <TIMEOUT>;
             key-positions = <1 8>;
-            bindings = <&bt PAUSE_BREAK>;
+            bindings = <&kp PAUSE_BREAK>;
             layers = <1>;
         };        
     };
