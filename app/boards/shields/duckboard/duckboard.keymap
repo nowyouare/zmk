@@ -114,9 +114,9 @@
 
          rgb_bt_layer {
              bindings = <
-                &none              &to FUNC         &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &none
-                &none              &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &none
-                &none              &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &none
+                &none              &to FUNC         &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_SPI
+                &none              &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPD
+                &none              &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD
                 &ext_power EP_TOG  &none            &none            &none            &none
                 &to FUNC           &none            &none            &none            &none
             >;
